@@ -1,39 +1,22 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+function getWeather() {
+  const city = document.getElementById("city").value.toLowerCase();
 
-function showTasks() {
-  let list = document.getElementById("taskList");
-  list.innerHTML = "";
+  let result = "";
 
-  tasks.forEach((task, index) => {
-    let li = document.createElement("li");
-    li.innerHTML = `
-      ${task}
-      <button onclick="deleteTask(${index})">Delete</button>
-    `;
-    list.appendChild(li);
-  });
-}
-
-function addTask() {
-  let input = document.getElementById("taskInput");
-  let task = input.value;
-
-  if (task === "") {
-    alert("Enter a task!");
-    return;
+  if (city === "bangalore") {
+    result = "Temperature in Bangalore: 28°C ☀️";
+  } else if (city === "delhi") {
+    result = "Temperature in Delhi: 32°C 🌤️";
+  } else if (city === "mumbai") {
+    result = "Temperature in Mumbai: 30°C 🌧️";
+  }
+  else if (city === "chennai") {
+  result = "Temperature in Chennai: 34°C 🌞";
+} else if (city === "kolkata") {
+  result = "Temperature in Kolkata: 31°C ☁️";
+} else {
+    result = "City not found";
   }
 
-  tasks.push(task);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-
-  input.value = "";
-  showTasks();
+  document.getElementById("result").innerText = result;
 }
-
-function deleteTask(index) {
-  tasks.splice(index, 1);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  showTasks();
-}
-
-showTasks();

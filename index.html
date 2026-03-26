@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>To-Do List</title>
+  <title>Weather App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h2>My To-Do List</h2>
+  <div class="container">
+    <h1>Weather App</h1>
+    
+    <input type="text" id="city" placeholder="Enter city">
+    <button onclick="getWeather()">Search</button>
 
-  <input type="text" id="taskInput" placeholder="Enter task">
-  <button onclick="addTask()">Add</button>
-
-  <ul id="taskList"></ul>
+    <h2 id="result"></h2>
+  </div>
 
   <script src="script.js"></script>
 </body>
